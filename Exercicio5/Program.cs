@@ -6,8 +6,18 @@ class Program
     {
         Console.WriteLine("Tempo até formatura\n");
         
-        DateOnly data1 = new DateOnly(2027, 06, 27);
-        DateOnly data2 = DateOnly.FromDateTime(DateTime.Now);
+        DateOnly data1 = new DateOnly(2025, 06, 27);
+        Console.WriteLine("Insira uma data (dd/mm/aaaa)\n");
+        if (!DateOnly.TryParseExact(Console.ReadLine( ),"dd/MM/yyyy", out DateOnly data2))
+        {
+            Console.WriteLine("Data inválida");
+            return;
+        }
+        if (data2 > DateOnly.FromDateTime(DateTime.Now))
+        {
+            Console.WriteLine("Data não pode ser no futuro");
+            return;
+        }
         
         var diferencaAnos = data1.Year - data2.Year;
         var diferencaMeses = data1.Month - data2.Month;
