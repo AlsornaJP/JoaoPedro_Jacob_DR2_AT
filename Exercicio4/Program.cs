@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Tempo até o próximo aniversário");
-        Console.WriteLine("\nInsira sua data de nascimento(dd/mm/aaaa)");
+        Console.WriteLine("Insira sua data de nascimento\n");
         
         if (!DateOnly.TryParseExact(Console.ReadLine( ),"dd/MM/yyyy", out DateOnly data))
         {
