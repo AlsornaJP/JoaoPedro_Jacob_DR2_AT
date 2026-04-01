@@ -35,17 +35,35 @@ public static class ListaDeContatos
             Console.WriteLine("\nNenhum contato registrado");
             return;
         }
-
-        Console.WriteLine("=== Contatos registrados ===");
-        foreach (var linha in linhas)
+        
+        Console.WriteLine("""
+                          === Escolha a forma que deseja visualizar os contatos ===
+                          1) Texto puro
+                          2) Tabela
+                          3) Markdown
+                          
+                          """);
+        if(!int.TryParse(Console.ReadLine(), out int opcao))
         {
-            var partes = linha.Split(',');
+            Console.WriteLine("Entrada inválida");
+        }
 
-            string nome = partes[0];
-            string telefone = partes[1];
-            string email = partes[2];
-
-            Console.WriteLine($"\nNome: {nome} | Telefone: {telefone} | Email: {email}");
+        switch (opcao)
+        {
+            case 1:
+                RawTextFormatter formatador1 = new RawTextFormatter();
+                formatador1.ExibirLista(linhas);
+                break;
+            
+            case 2:
+                TableFormatter formatador2 = new TableFormatter();
+                formatador2.ExibirLista(linhas);
+                break;
+            
+            case 3:
+                MarkdownFormatter formatador3 = new MarkdownFormatter();
+                formatador3.ExibirLista(linhas);
+                break;
         }
     }
 }
