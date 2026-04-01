@@ -1,21 +1,19 @@
-﻿namespace Exercicio9;
+﻿namespace Exercicios11_12;
 
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Controle de estoque");
-        string path = "estoque.txt";
-        Estoque estoque = new Estoque();
+    { 
+        Console.WriteLine("Lista de contatos");
         bool rodando = true;
         
         while (rodando)
         { 
             Console.WriteLine("""
                             
-                            O que deseja fazer?
-                            1) Adicionar produto (máx. 5)
-                            2) Listar produtos
+                            === Gerenciador de Contatos ===
+                            1) Adicionar contato
+                            2) Listar contatos
                             3) Sair
                             
                             """);
@@ -30,24 +28,17 @@ class Program
                 case 1 :
                     try
                     {
-                        Console.WriteLine("\nInsira o nome do produto:");
+                        Console.WriteLine("\nInsira o nome do contato:");
                         string? nome = Console.ReadLine();
                         
-                        Console.WriteLine("\nInsira a quantidade do produto:");
-                        if (!int.TryParse(Console.ReadLine(), out int qtd))
-                        {
-                            throw new ArgumentOutOfRangeException(nameof(qtd), "Valor inválido");
-                        }
+                        Console.WriteLine("\nInsira o telefone:");
+                        string? telefone = Console.ReadLine();
                         
-                        Console.WriteLine("\nInsira o preço do produto:");
-                        if (!double.TryParse(Console.ReadLine(), out double preco))
-                        {
-                            throw new ArgumentOutOfRangeException(nameof(preco), "Valor inválido");
-                        }
+                        Console.WriteLine("\nInsira o email:");
+                        string? email = Console.ReadLine();
         
-                        Produto produto = new Produto(nome, qtd, preco);
-                        estoque.AdicionarProduto(produto);
-        
+                        Contato contato = new Contato(nome, telefone, email);
+                        ListaDeContatos.AdicionarContato(contato);
                         
                     }
                     catch (ArgumentOutOfRangeException e)
@@ -57,7 +48,7 @@ class Program
                     break;
                 
                 case 2: 
-                    estoque.ListarProdutos();
+                    ListaDeContatos.ListarContatos();
                     break;
                 
                 case 3:
@@ -69,7 +60,5 @@ class Program
                     Console.WriteLine("\nEscolha uma das 3 opções disponíveis");
                     break;
             }
-        }
-       
-    }
+        }    }
 }

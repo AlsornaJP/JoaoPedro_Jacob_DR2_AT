@@ -12,7 +12,7 @@ public class Produto
     private string Nome
     {
         get;
-        set => field = (!string.IsNullOrEmpty(value))
+        set => field = !string.IsNullOrEmpty(value)
             ? value
             : throw new ArgumentOutOfRangeException(nameof(value), "Nome inválido");
     }
@@ -20,7 +20,7 @@ public class Produto
     private int Qtd
     {
         get;
-        set => field = (value >= 0)
+        set => field = value >= 0
             ? value
             : throw new ArgumentOutOfRangeException(nameof(value), "Quantidade não pode ser negativa");
     }
@@ -28,7 +28,7 @@ public class Produto
     private double Preco
     {
         get;
-        set => field = (value >= 0)
+        set => field = value >= 0
             ? value
             : throw new ArgumentOutOfRangeException(nameof(value), "Preço não pode ser negativo");
     }
@@ -37,15 +37,6 @@ public class Produto
     {
         return Nome;
     }
-    public int GetQtd()
-    {
-        return Qtd;
-    }
-    public double GetPreco()
-    {
-        return Preco;
-    }
-    
     public string FormatoCsv()
     {
         return $"{Nome}, {Qtd}, {Preco}";

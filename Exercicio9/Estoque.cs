@@ -33,7 +33,7 @@ public class Estoque
         if (!File.Exists(path))
         {
             File.Create(path).Close();
-            Console.WriteLine("Nenhum produto cadastrado.");
+            Console.WriteLine("Nenhum produto cadastrado");
             return;
         }
 
@@ -41,7 +41,7 @@ public class Estoque
         
         if (linhas.Length == 0)
         {
-            Console.WriteLine("Nenhum produto cadastrado.");
+            Console.WriteLine("Nenhum produto cadastrado");
             return;
         }
 
